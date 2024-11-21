@@ -4,6 +4,7 @@ import { logout } from '@/lib/actions';
 import { compareSessionWithUserId } from '@/lib/session';
 import axios from 'axios';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useParams, useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 
@@ -50,13 +51,17 @@ export default function User()
         <>
             <nav className="bg-blue-600 text-white px-4 py-2 flex justify-between items-center">
                 <div className="text-lg font-semibold">
-                    <a href="/" className="hover:text-gray-200">Home</a>
+                    <Link href={`/user/${params.id}`}>
+                        <span className="hover:text-gray-200">Home</span>
+                    </Link>
                 </div>
                 <div>
                     <ul className="flex space-x-6">
 
                         <li>
-                            <a href={`/profile/${params.id}`} className="hover:text-gray-200">Profile</a>
+                            <Link href={`/profile/${params.id}`} className="hover:text-gray-200">
+                                <span className="hover:text-gray-200">Profile</span>
+                            </Link>
                         </li>
                         <li>
                             <button
