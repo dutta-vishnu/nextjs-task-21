@@ -17,6 +17,8 @@ export default function Home()
 
   const router = useRouter();
 
+  console.log( process.env.DATABASE_URL );
+
   const handleSubmit = async ( e ) =>
   {
     try
@@ -107,7 +109,7 @@ export default function Home()
                   <label htmlFor="password" className="block text-sm/6 font-medium text-gray-900">
                     Password
                   </label>
-                 
+
                 </div>
                 <div className="mt-2">
                   <input
@@ -164,7 +166,7 @@ export default function Home()
             </form>
           </> )}
 
-         
+
         </div>
       </div>
     </div>
