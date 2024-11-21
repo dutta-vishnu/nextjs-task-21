@@ -45,7 +45,7 @@ export default function User()
             }
         }
         fetchSession();
-    }, [ params.id, router ] );
+    }, [ params.id ] );
 
     return (
         <>

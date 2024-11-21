@@ -1,4 +1,4 @@
-"use server"
+"use server";
 
 import { SignJWT, jwtVerify } from "jose";
 import { cookies as getCookies } from "next/headers";
@@ -62,25 +62,30 @@ export async function decrypt( session )
 }
 
 // Compare session with userId
-export async function compareSessionWithUserId(providedUserId) {
-    try {
-        const cookieHandler = getCookies();
-        const sessionCookie = cookieHandler.get("session_testing");
+export async function compareSessionWithUserId( providedUserId )
+{
+    try
+    {
+        const cookieHandler = await getCookies();
+        const sessionCookie = cookieHandler.get( "session_testing" );
 
-        if (!sessionCookie) {
-            throw new Error("No session cookie found");
+        if ( !sessionCookie )
+        {
+            throw new Error( "No session cookie found" );
         }
 
-        const sessionData = await decrypt(sessionCookie.value);
+        const sessionData = await decrypt( sessionCookie.value );
 
-        if (!sessionData) {
-            throw new Error("Invalid or expired session");
+        if ( !sessionData )
+        {
+            throw new Error( "Invalid or expired session" );
         }
 
         // Compare the userId from the session with the provided userId
         return sessionData.userId === providedUserId;
-    } catch (error) {
-        console.error("Failed to compare session with userId:", error);
+    } catch ( error )
+    {
+        console.error( "Failed to compare session with userId:", error );
         return false; // Return false if comparison fails
     }
 }

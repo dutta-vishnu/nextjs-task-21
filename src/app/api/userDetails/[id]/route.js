@@ -6,7 +6,7 @@ export const GET = async ( req, { params } ) =>
 {
     try
     {
-        const { id } = params;
+        const { id } = await params;
 
         const db = await connectToDatabase1();
 
