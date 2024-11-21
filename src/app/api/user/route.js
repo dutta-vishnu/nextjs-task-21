@@ -59,7 +59,8 @@ export const POST = async ( req ) =>
     {
         return NextResponse.json( {
             status: false,
-            message: "error in registration"
+            message: "error in registration",
+            error
         } );
     }
 };
